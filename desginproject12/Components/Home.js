@@ -29,15 +29,15 @@ import {
 import 'react-native-gesture-handler';
 import FontAweSome from 'react-native-vector-icons/FontAwesome';
 
+const link_image = 'https://vanhienblog.info/wp-content/uploads/2019/02/anh-gai-xinh-dep-hot-girl-1-00-600x445.jpg';
+
 const Home = () => {
   return (
-      <View style = {{backgroundColor: 'white'}}>
-        <ScrollView style={styles.Container}>
-            <View style={styles.rowfirst}>
-            <Text style={{fontSize: 30, color: 'black', fontWeight: 'bold'}}>
-                Dating
-            </Text>
-            <TouchableOpacity
+    <View style={{backgroundColor: 'white'}}>
+      <ScrollView style={styles.Container}>
+        <View style={styles.rowfirst}>
+          {_funText(styles.rowfirst_Text, 'Dating')}
+          <TouchableOpacity
                 style={[
                 styles.btnStyle,
                 {
@@ -52,55 +52,52 @@ const Home = () => {
                 style={{margin: 10, marginHorizontal: 12}}
                 />
             </TouchableOpacity>
-            </View>
+        </View>
 
-            <View style={styles.rowSecond}>
-            {_funToucherAble('user-o','Profile',true,20,20,_funPress,'rgba(192,192,192,0.6)')}
-            {_funToucherAble('heart','Liked You',true,20,20,_funPress,'rgba(192,192,192,0.6)')}
-            {_funToucherAble('comments-o','Matches',true,20,20,_funPress,'rgba(192,192,192,0.6)')}
-            </View>
+        <View style={styles.rowSecond}>
+          {_funToucherAble('user-o','Profile',true,20,20,_funPress,'rgba(192,192,192,0.6)',)}
+          {_funToucherAble('heart','Liked You',true,20,20, _funPress,'rgba(192,192,192,0.6)',)}
+          {_funToucherAble('comments-o','Matches',true,20,20,_funPress,'rgba(192,192,192,0.6)',
+          )}
+        </View>
 
-            <View style={{alignItems: 'center'}}>
-            <View style={styles.rowThird}>
-                {_funDrawImage(380,360,0,'white','https://vanhienblog.info/wp-content/uploads/2019/02/anh-gai-xinh-dep-hot-girl-1-00-600x445.jpg',0,0,)}
+        <View style={{alignItems: 'center'}}>
+          <View style={styles.rowThird}>
+            {_funDrawImage(380,360,0,'white', link_image ,0,0,)}
 
-                <View style={{margin: 10}}>
-                {_funText(24, 'bold', 'black', 'Vân')}
-                <Text>Trường Cao đẳng Sư Phạm Hà Nội</Text>
-                </View>
-                <View style={styles.btnImage}>
-                <View>
-                    {_funToucherAble('window-close',' ',false,40,40,_funPress,'#FF00FF',)}
-                </View>
-                <View>
-                {_funToucherAble('heart',' ',false,40,40,_funPress,'#FF00FF',)}
-                </View>
-                </View>
+            <View style={{margin: 10}}>
+              {_funText(styles.imgae_Name, 'Vân')}
+              <Text>Trường Cao đẳng Sư Phạm Hà Nội</Text>
             </View>
+            <View style={styles.btnImage}>
+              <View>
+                {_funToucherAble('window-close',' ',false,40,40,_funPress,'#FF00FF',)}
+              </View>
+              <View>
+                {_funToucherAble('heart',' ',false,40,40,_funPress,'#FF00FF')}
+              </View>
             </View>
-            <View style={styles.lineStyle} />
+          </View>
+        </View>
+        <View style={styles.lineStyle} />
 
-            <View style={styles.rowFourth}>
-            {_funText(24, 'bold', 'black', 'Suggested Stories')}
-            <View style={styles.storyItem}>
-                {_fun_ItemStory('Mai Anh')}
-                {_fun_ItemStory('Mai Anh')}
-                {_fun_ItemStory('Mai Anh')}
-                {_fun_ItemStory('Mai Anh')}
-                </View>
-            </View>
-        </ScrollView>
-      </View>
+        <View style={styles.rowFourth}>
+          {_funText(styles.rowFourth_Title, 'Suggested Stories')}
+          <View style={styles.storyItem}>
+            {_fun_ItemStory('Mai Anh')}
+            {_fun_ItemStory('Mai Anh')}
+            {_fun_ItemStory('Mai Anh')}
+            {_fun_ItemStory('Mai Anh')}
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
-
-
 
 _funPress = () => {
   Alert.alert('This is my app');
 };
-
-
 
 _funDrawImage = (_width, _height, _radius, _boderColor, _uri, _borderWidth) => {
   return (
@@ -117,9 +114,9 @@ _funDrawImage = (_width, _height, _radius, _boderColor, _uri, _borderWidth) => {
   );
 };
 
-_funText = (_textSize, _fontWeight, _color, _content) => {
+_funText = (_style, _content) => {
   return (
-    <Text style={{fontSize: _textSize, fontWeight: _fontWeight, color: _color}}>
+    <Text style={_style}>
       {_content}
     </Text>
   );
@@ -128,18 +125,12 @@ _funText = (_textSize, _fontWeight, _color, _content) => {
 _fun_ItemStory = (name) => {
   return (
     <View style={{alignItems: 'center', margin: 10}}>
-      {_funDrawImage(
-        70,
-        70,
-        40,
-        '#CC0099',
-        'https://vanhienblog.info/wp-content/uploads/2019/02/anh-gai-xinh-dep-hot-girl-1-00-600x445.jpg',
-        2,
-      )}
+      {_funDrawImage(70,70,40,'#CC0099', link_image,2,)}
       <Text>{name}</Text>
     </View>
   );
 };
+
 
 _funToucherAble = (
   iconName,
@@ -159,7 +150,9 @@ _funToucherAble = (
         ]}
         onPress={_onPress}>
         <FontAweSome name={iconName} size={iconSize} style={{margin: 8}} />
-        <Text style={{fontSize: 15, marginRight: 10, fontWeight: 'bold'}}>{title}</Text>
+        <Text style={{fontSize: 15, marginRight: 10, fontWeight: 'bold'}}>
+          {title}
+        </Text>
       </TouchableOpacity>
     );
   }
@@ -172,7 +165,7 @@ _funToucherAble = (
             borderRadius: _boderRadius,
             backgroundColor: _backGroundColor,
           },
-          styles.shadow
+          styles.shadow,
         ]}
         onPress={_onPress}>
         <FontAweSome name={iconName} size={iconSize} style={{margin: 10}} />
@@ -185,7 +178,6 @@ const styles = StyleSheet.create({
   Container: {
     flexDirection: 'column',
     margin: 10,
-
   },
   btnStyle: {
     marginRight: 10,
@@ -247,6 +239,33 @@ const styles = StyleSheet.create({
     shadowOpacity: 2,
     elevation: 6,
     // background color must be set
+  },
+  rowFirst_btn: {
+    marginRight: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderRadius: 50,
+    backgroundColor: 'rgba(192,192,192,0.6)',
+  },
+  rowFirst_FontAW: {
+    margin: 10,
+    marginHorizontal: 12,
+  },
+  rowfirst_Text: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  imgae_Name: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black'
+  },
+  rowFourth_Title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black'
   }
 });
 
